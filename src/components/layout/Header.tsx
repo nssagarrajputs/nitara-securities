@@ -9,8 +9,8 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="border-pacific sticky top-0 z-50 border-b-2 bg-white">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+        <header className="border-pacific bg-pacific-50/95 fixed top-0 z-50 w-full border-b-2">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2">
                 {/* Logo */}
                 <Link href="/">
                     <Image
