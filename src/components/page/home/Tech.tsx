@@ -5,17 +5,15 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import {
     Zap,
-    BarChart3,
     Cpu,
     Database,
     Shield,
     Activity,
     LineChart,
-    Terminal,
     TrendingUp,
     Calculator,
 } from "lucide-react";
-import Image from "next/image";
+// import Image from "next/image";
 
 const platformFeatures = [
     {
@@ -94,10 +92,10 @@ export default function TechnologyPlatform() {
     return (
         <section
             ref={ref}
-            className="from-twilight-900 via-twilight-800 to-pacific-900 relative overflow-hidden bg-gradient-to-br px-4 py-16 lg:py-24"
+            className="from-twilight-900 via-twilight-800 to-pacific-900 relative overflow-hidden bg-linear-to-br px-4 py-16 lg:py-24"
         >
             {/* Background Pattern */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f08_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f08_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+            <div className="bg-size[4rem_4rem] absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f08_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f08_1px,transparent_1px)]" />
 
             {/* Gradient Orbs */}
             <div className="bg-pacific-500/10 absolute top-0 -right-32 h-96 w-96 rounded-full blur-3xl" />
@@ -119,7 +117,7 @@ export default function TechnologyPlatform() {
                     </div>
                     <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
                         Professional-Grade{" "}
-                        <span className="from-pacific-400 to-bamber-400 bg-gradient-to-r bg-clip-text text-transparent">
+                        <span className="from-pacific-400 to-bamber-400 bg-linear-to-r bg-clip-text text-transparent">
                             Technology
                         </span>
                     </h2>
@@ -151,12 +149,12 @@ export default function TechnologyPlatform() {
                                 className="group border-pacific-500/20 bg-twilight-800/50 hover:border-pacific-400/40 hover:bg-twilight-800/70 relative overflow-hidden rounded-2xl border p-6 backdrop-blur-sm transition-all duration-300"
                             >
                                 {/* Glow effect */}
-                                <div className="from-pacific-500/0 via-pacific-500/5 to-pacific-500/0 absolute -inset-1 rounded-2xl bg-gradient-to-r opacity-0 blur transition-opacity duration-500 group-hover:opacity-100" />
+                                <div className="from-pacific-500/0 via-pacific-500/5 to-pacific-500/0 absolute -inset-1 rounded-2xl bg-linear-to-r opacity-0 blur transition-opacity duration-500 group-hover:opacity-100" />
 
                                 <div className="relative">
                                     {/* Icon & Badge */}
                                     <div className="mb-4 flex items-center justify-between">
-                                        <div className="from-pacific-500/20 to-pacific-600/20 text-pacific-400 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br transition-transform duration-300 group-hover:scale-110">
+                                        <div className="from-pacific-500/20 to-pacific-600/20 text-pacific-400 flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br transition-transform duration-300 group-hover:scale-110">
                                             <Icon size={24} />
                                         </div>
                                         <div className="bg-bamber-500/20 text-bamber-400 rounded-full px-3 py-1 text-xs font-bold">
@@ -190,7 +188,7 @@ export default function TechnologyPlatform() {
                     <div className="mb-12 text-center">
                         <h3 className="mb-4 text-2xl font-bold text-white md:text-3xl lg:text-4xl">
                             Our Trading{" "}
-                            <span className="from-bamber-400 to-pacific-400 bg-gradient-to-r bg-clip-text text-transparent">
+                            <span className="from-bamber-400 to-pacific-400 bg-linear-to-r bg-clip-text text-transparent">
                                 Platforms
                             </span>
                         </h3>
@@ -222,14 +220,14 @@ export default function TechnologyPlatform() {
                                     className="group border-pacific-500/30 bg-twilight-800/60 hover:border-pacific-400/50 hover:bg-twilight-800/80 hover:shadow-pacific-500/20 relative overflow-hidden rounded-2xl border backdrop-blur-sm transition-all duration-300 hover:shadow-2xl"
                                 >
                                     {/* Screenshot/Image Container */}
-                                    <div className="from-twilight-700 to-twilight-800 relative aspect-video overflow-hidden bg-gradient-to-br">
+                                    <div className="from-twilight-700 to-twilight-800 relative aspect-video overflow-hidden bg-linear-to-br">
                                         {/* Placeholder for screenshot */}
                                         <div className="flex h-full w-full items-center justify-center">
                                             <div
                                                 className={`flex h-24 w-24 items-center justify-center rounded-2xl ${
                                                     isPacific
-                                                        ? "from-pacific-500/30 to-pacific-600/30 bg-gradient-to-br"
-                                                        : "from-bamber-500/30 to-bamber-600/30 bg-gradient-to-br"
+                                                        ? "from-pacific-500/30 to-pacific-600/30 bg-linear-to-br"
+                                                        : "from-bamber-500/30 to-bamber-600/30 bg-linear-to-br"
                                                 }`}
                                             >
                                                 <Icon
@@ -252,7 +250,7 @@ export default function TechnologyPlatform() {
                     */}
 
                                         {/* Overlay Gradient on Hover */}
-                                        <div className="from-twilight-900 absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-80" />
+                                        <div className="from-twilight-900 absolute inset-0 bg-linear-to-t via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-80" />
                                     </div>
 
                                     {/* Content */}
@@ -278,8 +276,8 @@ export default function TechnologyPlatform() {
                                     <div
                                         className={`absolute bottom-0 left-0 h-1 w-0 transition-all duration-300 group-hover:w-full ${
                                             isPacific
-                                                ? "from-pacific-500 to-pacific-600 bg-gradient-to-r"
-                                                : "from-bamber-500 to-bamber-600 bg-gradient-to-r"
+                                                ? "from-pacific-500 to-pacific-600 bg-linear-to-r"
+                                                : "from-bamber-500 to-bamber-600 bg-linear-to-r"
                                         }`}
                                     />
                                 </motion.div>

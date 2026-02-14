@@ -74,7 +74,7 @@ export default function HowItWorks() {
                 {/* Steps Container */}
                 <div className="relative">
                     {/* Connection Line - Desktop Only */}
-                    <div className="from-pacific-200 via-bamber-200 to-pacific-200 absolute top-24 right-0 left-0 hidden h-0.5 bg-gradient-to-r lg:block" />
+                    <div className="from-pacific-200 via-bamber-200 to-pacific-200 absolute top-24 right-0 left-0 hidden h-0.5 bg-linear-to-r lg:block" />
 
                     {/* Steps Grid */}
                     <div className="grid gap-8 md:grid-cols-3">
@@ -103,8 +103,8 @@ export default function HowItWorks() {
                                         <div
                                             className={`absolute -top-4 left-8 inline-flex h-12 w-12 items-center justify-center rounded-full border-4 border-white text-lg font-bold ${
                                                 isPacific
-                                                    ? "from-pacific-500 to-pacific-600 bg-gradient-to-br text-white"
-                                                    : "from-bamber-500 to-bamber-600 text-twilight-900 bg-gradient-to-br"
+                                                    ? "from-pacific-500 to-pacific-600 bg-linear-to-br text-white"
+                                                    : "from-bamber-500 to-bamber-600 text-twilight-900 bg-linear-to-br"
                                             } shadow-lg transition-transform duration-300 group-hover:scale-110`}
                                         >
                                             {step.number}
@@ -133,8 +133,8 @@ export default function HowItWorks() {
                                         <div
                                             className={`absolute bottom-0 left-0 h-1 w-0 rounded-b-2xl ${
                                                 isPacific
-                                                    ? "from-pacific-500 to-pacific-600 bg-gradient-to-r"
-                                                    : "from-bamber-500 to-bamber-600 bg-gradient-to-r"
+                                                    ? "from-pacific-500 to-pacific-600 bg-linear-to-r"
+                                                    : "from-bamber-500 to-bamber-600 bg-linear-to-r"
                                             } transition-all duration-300 group-hover:w-full`}
                                         />
                                     </div>
@@ -175,12 +175,12 @@ export default function HowItWorks() {
                     transition={{ duration: 0.5, delay: 0.8 }}
                     className="mt-16 text-center"
                 >
-                    <div className="border-pacific-200 from-pacific-50 to-bamber-50/30 mx-auto max-w-2xl rounded-2xl border-2 bg-gradient-to-br p-8 md:p-10">
+                    <div className="border-pacific-200 from-pacific-50 to-bamber-50/30 mx-auto max-w-2xl rounded-2xl border-2 bg-linear-to-br p-8 md:p-10">
                         <h3 className="text-twilight-900 mb-4 text-2xl font-bold md:text-3xl">
                             Ready to Get Started?
                         </h3>
                         <p className="text-twilight-700 mb-6 text-lg leading-relaxed">
-                            The first step is simple. Reach out and let's
+                            The first step is simple. Reach out and {" let's "}
                             discuss how we can support your trading career.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

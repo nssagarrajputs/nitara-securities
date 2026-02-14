@@ -68,15 +68,6 @@ export default function Testimonials() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
 
-    // Auto-play carousel
-    useEffect(() => {
-        const timer = setInterval(() => {
-            handleNext();
-        }, 5000); // Change every 5 seconds
-
-        return () => clearInterval(timer);
-    }, [currentIndex]);
-
     const handleNext = () => {
         setDirection(1);
         setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -111,10 +102,19 @@ export default function Testimonials() {
 
     const currentTestimonial = testimonials[currentIndex];
 
+    // Auto-play carousel
+    useEffect(() => {
+        const timer = setInterval(() => {
+            handleNext();
+        }, 5000); // Change every 5 seconds
+
+        return () => clearInterval(timer);
+    }, [currentIndex]);
+
     return (
         <section
             ref={ref}
-            className="from-twilight-50 to-pacific-50/30 relative overflow-hidden bg-gradient-to-br px-4 py-16 lg:py-24"
+            className="from-twilight-50 to-pacific-50/30 relative overflow-hidden bg-linear-to-br px-4 py-16 lg:py-24"
         >
             {/* Decorative Elements */}
             <div className="bg-pacific-200/30 absolute top-20 -right-20 h-80 w-80 rounded-full blur-3xl" />
@@ -138,7 +138,7 @@ export default function Testimonials() {
                         What Our Traders{" "}
                         <span className="text-pacific-600">Say</span>
                     </h2>
-                    <div className="from-pacific-500 to-bamber-500 mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r" />
+                    <div className="from-pacific-500 to-bamber-500 mx-auto mb-6 h-1 w-24 rounded-full bg-linear-to-r" />
                     <p className="text-twilight-600 mx-auto max-w-3xl text-lg leading-relaxed">
                         Real experiences from traders who have built successful
                         careers at Nitara Securities.
@@ -201,7 +201,7 @@ export default function Testimonials() {
                                     {/* Author Info */}
                                     <div className="border-twilight-100 relative flex flex-col items-center gap-4 border-t pt-8">
                                         {/* Avatar */}
-                                        <div className="from-pacific-500 to-pacific-600 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br text-2xl font-bold text-white shadow-lg">
+                                        <div className="from-pacific-500 to-pacific-600 flex h-20 w-20 items-center justify-center rounded-full bg-linear-to-br text-2xl font-bold text-white shadow-lg">
                                             {currentTestimonial.image}
                                         </div>
 
@@ -220,7 +220,7 @@ export default function Testimonials() {
                                     </div>
 
                                     {/* Hover Accent */}
-                                    <div className="from-pacific-500 to-bamber-500 absolute bottom-0 left-0 h-1 w-0 rounded-b-3xl bg-gradient-to-r transition-all duration-300 group-hover:w-full" />
+                                    <div className="from-pacific-500 to-bamber-500 absolute bottom-0 left-0 h-1 w-0 rounded-b-3xl bg-linear-to-r transition-all duration-300 group-hover:w-full" />
                                 </div>
                             </motion.div>
                         </AnimatePresence>
@@ -272,7 +272,6 @@ export default function Testimonials() {
                         {currentIndex + 1} / {testimonials.length}
                     </div>
                 </div>
-
             </div>
         </section>
     );

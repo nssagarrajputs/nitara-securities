@@ -82,7 +82,7 @@ export default function Leadership() {
                         Meet Our{" "}
                         <span className="text-pacific-600">Leadership</span>
                     </h2>
-                    <div className="from-pacific-500 to-bamber-500 mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r" />
+                    <div className="from-pacific-500 to-bamber-500 mx-auto mb-6 h-1 w-24 rounded-full bg-linear-to-r" />
                     <p className="text-twilight-600 mx-auto max-w-3xl text-lg leading-relaxed">
                         Experienced professionals dedicated to building the
                         future of proprietary trading in India.
@@ -104,10 +104,10 @@ export default function Leadership() {
                             className="group border-twilight-100 hover:border-pacific-300 hover:shadow-pacific-100 relative overflow-hidden rounded-2xl border-2 bg-white transition-all duration-300 hover:shadow-xl"
                         >
                             {/* Image Container */}
-                            <div className="from-pacific-100 to-twilight-100 relative aspect-[4/5] overflow-hidden bg-gradient-to-br">
+                            <div className="from-pacific-100 to-twilight-100 relative aspect-4/5 overflow-hidden bg-linear-to-br">
                                 {/* Placeholder for image */}
                                 <div className="flex h-full w-full items-center justify-center">
-                                    <div className="from-pacific-500 to-pacific-600 flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br text-5xl font-bold text-white">
+                                    <div className="from-pacific-500 to-pacific-600 flex h-32 w-32 items-center justify-center rounded-full bg-linear-to-br text-5xl font-bold text-white">
                                         {member.name.charAt(0)}
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@ export default function Leadership() {
                             </div>
 
                             {/* Hover Accent */}
-                            <div className="from-pacific-500 to-bamber-500 absolute bottom-0 left-0 h-1 w-0 rounded-b-2xl bg-gradient-to-r transition-all duration-300 group-hover:w-full" />
+                            <div className="from-pacific-500 to-bamber-500 absolute bottom-0 left-0 h-1 w-0 rounded-b-2xl bg-linear-to-r transition-all duration-300 group-hover:w-full" />
                         </motion.div>
                     ))}
                 </div>

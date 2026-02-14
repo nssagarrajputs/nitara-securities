@@ -171,9 +171,9 @@ export default function TradingStrategies() {
                         Smart Strategies.{" "}
                         <span className="text-pacific-600">Real Results</span>
                     </h2>
-                    <div className="from-pacific-500 to-bamber-500 mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r" />
+                    <div className="from-pacific-500 to-bamber-500 mx-auto mb-6 h-1 w-24 rounded-full bg-linear-to-r" />
                     <p className="text-twilight-600 mx-auto max-w-3xl text-lg leading-relaxed">
-                        We don't just fund trades—we power them with proven,
+                        We {"don't"} just fund trades—we power them with proven,
                         risk-managed strategies developed by experts and
                         fine-tuned by data.
                     </p>
@@ -246,8 +246,8 @@ export default function TradingStrategies() {
                                 <div
                                     className={`mb-6 flex h-16 w-16 items-center justify-center rounded-xl text-white shadow-lg transition-transform duration-300 group-hover:scale-110 ${
                                         isPacific
-                                            ? "from-pacific-500 to-pacific-600 shadow-pacific-200 bg-gradient-to-br"
-                                            : "from-bamber-500 to-bamber-600 shadow-bamber-200 bg-gradient-to-br"
+                                            ? "from-pacific-500 to-pacific-600 shadow-pacific-200 bg-linear-to-br"
+                                            : "from-bamber-500 to-bamber-600 shadow-bamber-200 bg-linear-to-br"
                                     }`}
                                 >
                                     <Icon size={32} />
@@ -312,8 +312,8 @@ export default function TradingStrategies() {
                                 <div
                                     className={`absolute bottom-0 left-0 h-1 w-0 rounded-b-2xl transition-all duration-300 group-hover:w-full ${
                                         isPacific
-                                            ? "from-pacific-500 to-pacific-600 bg-gradient-to-r"
-                                            : "from-bamber-500 to-bamber-600 bg-gradient-to-r"
+                                            ? "from-pacific-500 to-pacific-600 bg-linear-to-r"
+                                            : "from-bamber-500 to-bamber-600 bg-linear-to-r"
                                     }`}
                                 />
                             </motion.div>

@@ -113,7 +113,7 @@ export default function KeyFeatures() {
                                 className="group border-twilight-100 hover:border-pacific-300 hover:shadow-pacific-100 relative overflow-hidden rounded-2xl border-2 bg-white p-6 transition-all duration-300 hover:shadow-xl"
                             >
                                 {/* Icon */}
-                                <div className="from-pacific-500 to-pacific-600 shadow-pacific-200 mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
+                                <div className="from-pacific-500 to-pacific-600 shadow-pacific-200 mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-linear-to-br text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
                                     <Icon size={28} />
                                 </div>
 
@@ -143,7 +143,7 @@ export default function KeyFeatures() {
                                 </ul>
 
                                 {/* Hover Accent */}
-                                <div className="from-pacific-500 to-bamber-500 absolute bottom-0 left-0 h-1 w-0 rounded-b-2xl bg-gradient-to-r transition-all duration-300 group-hover:w-full" />
+                                <div className="from-pacific-500 to-bamber-500 absolute bottom-0 left-0 h-1 w-0 rounded-b-2xl bg-linear-to-r transition-all duration-300 group-hover:w-full" />
                             </motion.div>
                         );
                     })}
