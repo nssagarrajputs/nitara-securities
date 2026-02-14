@@ -258,12 +258,12 @@ export default function TradingStrategies() {
                                     {strategy.name}
                                 </h3>
 
-                                {/* Leg Count (for multi-leg strategies) */}
+                                {/* Leg Count (for multi-leg strategies)
                                 {strategy.legs && (
                                     <div className="bg-twilight-100 text-twilight-700 mb-3 inline-flex rounded-full px-3 py-1 text-xs font-bold">
                                         {strategy.legs}
                                     </div>
-                                )}
+                                )}  */}
 
                                 {/* Description */}
                                 <p className="text-twilight-600 mb-6 leading-relaxed">
