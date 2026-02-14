@@ -6,7 +6,7 @@ import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
     title: "Nitara Securities",
-    description: "A Properitery Structured trading desk ferm",
+    description: "A Proprietary Structured trading desk firm",
 };
 
 const inter = Inter({
