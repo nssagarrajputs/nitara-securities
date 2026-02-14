@@ -24,7 +24,7 @@ export default function Hero() {
                     >
                         <div className="border-pacific-500/30 bg-pacific-500/10 text-pacific-300 mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium backdrop-blur-sm">
                             <TrendingUp size={16} />
-                            <span>Proprietary Trading Desk</span>
+                            <span>Nitara Securities</span>
                         </div>
                     </motion.div>
 

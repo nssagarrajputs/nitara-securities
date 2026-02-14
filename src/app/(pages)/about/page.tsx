@@ -2,6 +2,7 @@ import Hero from "@/components/page/about/Hero";
 import OurStory from "@/components/page/about/OurStory";
 import WhatMakesUsDifferent from "@/components/page/about/WhatMakesUsDifferent";
 import OurValues from "@/components/page/about/OurValues";
+import Leadership from "@/components/page/about/Leadership";
 
 export const metadata = {
     title: "About Us - Nitara Securities",
@@ -16,6 +17,7 @@ export default function AboutPage() {
             <OurStory />
             <WhatMakesUsDifferent />
             <OurValues />
+            <Leadership/>
         </main>
     );
 }

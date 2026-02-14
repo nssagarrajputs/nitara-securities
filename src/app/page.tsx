@@ -5,7 +5,9 @@ import HowItWorks from "@/components/page/home/HowItsWork";
 import KeyFeatures from "@/components/page/home/KeyFeatures";
 import Stats from "@/components/page/home/Stats";
 import TechnologyPlatform from "@/components/page/home/Tech";
+import Testimonials from "@/components/page/home/Testimonials";
 import TradingCapabilities from "@/components/page/home/TradingCapabilities";
+import TradingStrategies from "@/components/page/home/TradingStrategies";
 import WhatWeDo from "@/components/page/home/WhatWeDo";
 
 export default function Home() {
@@ -14,10 +16,12 @@ export default function Home() {
             <HeroSection />
             <WhatWeDo />
             <TechnologyPlatform />
-            <HowItWorks />
-            <Stats />
+            <TradingStrategies/>
             <TradingCapabilities />
+            <Stats />
             <KeyFeatures />
+            <Testimonials />
+            <HowItWorks />
             <FAQ />
             <CTA />
         </main>

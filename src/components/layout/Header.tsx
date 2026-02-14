@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
     { label: "Home", href: "/" },
@@ -17,6 +18,15 @@ const navLinks = [
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
+
+    // Check if link is active
+    const isActive = (href: string) => {
+        if (href === "/") {
+            return pathname === "/";
+        }
+        return pathname.startsWith(href);
+    };
 
     // Handle scroll effect
     useEffect(() => {
@@ -62,16 +72,29 @@ export default function Header() {
 
                 {/* Desktop Navigation */}
                 <nav className="hidden items-center gap-8 md:flex">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className="group text-twilight hover:text-pacific-700 relative font-medium tracking-wide transition-colors"
-                        >
-                            {link.label}
-                            <span className="bg-bamber absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full" />
-                        </Link>
-                    ))}
+                    {navLinks.map((link) => {
+                        const active = isActive(link.href);
+                        return (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className={`group relative font-medium tracking-wide transition-colors ${
+                                    active
+                                        ? "text-pacific-700"
+                                        : "text-twilight hover:text-pacific-700"
+                                }`}
+                            >
+                                {link.label}
+                                <span
+                                    className={`bg-bamber absolute -bottom-1 left-0 h-0.5 transition-all duration-300 ${
+                                        active
+                                            ? "w-full"
+                                            : "w-0 group-hover:w-full"
+                                    }`}
+                                />
+                            </Link>
+                        );
+                    })}
                 </nav>
 
                 {/* CTA & Mobile Menu Button */}
@@ -99,16 +122,6 @@ export default function Header() {
             <AnimatePresence>
                 {isOpen && (
                     <>
-                        {/* Backdrop */}
-                        {/* <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="bg-twilight-900/50 fixed inset-0 backdrop-blur-sm md:hidden"
-                            onClick={() => setIsOpen(false)}
-                        /> */}
-
                         {/* Mobile Menu */}
                         <motion.nav
                             initial={{ opacity: 0, y: -20 }}
@@ -118,22 +131,34 @@ export default function Header() {
                             className="border-pacific absolute top-full right-0 left-0 border-b-2 bg-white shadow-xl md:hidden"
                         >
                             <ul className="divide-pacific-100 flex flex-col divide-y px-4 py-2">
-                                {navLinks.map((link, index) => (
-                                    <motion.li
-                                        key={link.href}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: index * 0.1 }}
-                                    >
-                                        <Link
-                                            href={link.href}
-                                            onClick={() => setIsOpen(false)}
-                                            className="text-twilight hover:text-pacific-700 block py-4 text-base font-medium transition-colors"
+                                {navLinks.map((link, index) => {
+                                    const active = isActive(link.href);
+                                    return (
+                                        <motion.li
+                                            key={link.href}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: index * 0.1 }}
                                         >
-                                            {link.label}
-                                        </Link>
-                                    </motion.li>
-                                ))}
+                                            <Link
+                                                href={link.href}
+                                                onClick={() => setIsOpen(false)}
+                                                className={`block py-4 text-base font-medium transition-colors ${
+                                                    active
+                                                        ? "text-pacific-700 font-bold"
+                                                        : "text-twilight hover:text-pacific-700"
+                                                }`}
+                                            >
+                                                <span className="flex items-center gap-2">
+                                                    {active && (
+                                                        <span className="bg-bamber h-2 w-2 rounded-full" />
+                                                    )}
+                                                    {link.label}
+                                                </span>
+                                            </Link>
+                                        </motion.li>
+                                    );
+                                })}
                                 <motion.li
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
