@@ -101,38 +101,100 @@ function Testimonial() {
     const navBtn =
         "flex-center size-12 shrink-0 cursor-pointer rounded-full border border-canvas-white/20 text-pen-primary smooth-transition hover:border-primary hover:bg-canvas-white/5 disabled:pointer-events-none disabled:opacity-30";
 
-    return (
-        <section className="px-6 py-24 sm:px-8 lg:px-12">
-            <div className="mx-auto max-w-6xl">
-                <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-                    <h2 className="text-h3 text-pen-primary max-w-2xl text-left font-bold">
-                        Real experiences from traders who have built successful careers at
-                        Nitara Securities.
-                    </h2>
+    // return (
+    //     <section className="px-6 py-24 sm:px-8 lg:px-12">
+    //         <div className="mx-auto max-w-6xl">
+    //             <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+    //                 <h2 className="text-h3 text-pen-primary max-w-2xl text-left font-bold">
+    //                     Real experiences from traders who have built successful careers at
+    //                     Nitara Securities.
+    //                 </h2>
 
-                    <div className="flex items-center gap-3">
-                        <button
-                            type="button"
-                            aria-label="Previous testimonials"
-                            onClick={() => scrollByCard(-1)}
-                            disabled={!canPrev}
-                            className={navBtn}
-                        >
-                            <ChevronLeft size={22} aria-hidden />
-                        </button>
-                        <button
-                            type="button"
-                            aria-label="Next testimonials"
-                            onClick={() => scrollByCard(1)}
-                            disabled={!canNext}
-                            className={navBtn}
-                        >
-                            <ChevronRight size={22} aria-hidden />
-                        </button>
-                    </div>
+    //                 <div className="flex items-center gap-3">
+    //                     <button
+    //                         type="button"
+    //                         aria-label="Previous testimonials"
+    //                         onClick={() => scrollByCard(-1)}
+    //                         disabled={!canPrev}
+    //                         className={navBtn}
+    //                     >
+    //                         <ChevronLeft size={22} aria-hidden />
+    //                     </button>
+    //                     <button
+    //                         type="button"
+    //                         aria-label="Next testimonials"
+    //                         onClick={() => scrollByCard(1)}
+    //                         disabled={!canNext}
+    //                         className={navBtn}
+    //                     >
+    //                         <ChevronRight size={22} aria-hidden />
+    //                     </button>
+    //                 </div>
+    //             </div>
+
+    //             {/* mobile 1.2 cards, tablet 2.5 cards, desktop 4.5 cards visible */}
+    //             <div
+    //                 ref={trackRef}
+    //                 onScroll={updateEdges}
+    //                 role="region"
+    //                 aria-label="Testimonials"
+    //                 tabIndex={0}
+    //                 className="mt-12 flex snap-x snap-mandatory scrollbar-none gap-6 overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:hidden"
+    //             >
+    //                 {testimonials.map((t) => (
+    //                     <figure
+    //                         key={t.id}
+    //                         className="rounded-4 border-canvas-white/15 bg-canvas-white/5 flex shrink-0 basis-[calc((100%-1.5rem)/1.2)] snap-start flex-col border p-6 sm:basis-[calc((100%-3rem)/2.5)] lg:basis-[calc((100%-6rem)/4.5)]"
+    //                     >
+    //                         <blockquote className="text-body text-pen-secondary flex-1 leading-relaxed">
+    //                             &ldquo;{t.quote}&rdquo;
+    //                         </blockquote>
+    //                         <div className="mt-6">
+    //                             <Stars rating={t.rating} />
+    //                         </div>
+    //                         <figcaption className="text-body text-pen-primary mt-3 font-semibold">
+    //                             {t.name}
+    //                         </figcaption>
+    //                     </figure>
+    //                 ))}
+    //             </div>
+    //         </div>
+    //     </section>
+    // );
+
+    return (
+        <section className="relative isolate overflow-hidden px-6 py-24 sm:px-8 lg:px-12">
+            {/* dotted grid background: beech mein dikhta hai, kinaron par fade */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle,rgba(255,255,255,0.22)_1px,transparent_1px)] mask-[radial-gradient(ellipse_at_center,black_30%,transparent_75%)] bg-size-[24px_24px]"
+            />
+
+            {/* accent glow: left */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute top-1/2 left-0 -z-10 h-144 w-xl -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,var(--color-canvas-accent),transparent_70%)] opacity-[0.15]"
+            />
+
+            {/* accent glow: right */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute top-1/2 right-0 -z-10 h-144 w-xl translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,var(--color-canvas-accent),transparent_70%)] opacity-[0.15]"
+            />
+
+            <div className="relative mx-auto max-w-6xl">
+                {/* Heading */}
+                <div className="text-center">
+                    <h2 className="text-h2 font-bold">
+                        Real experiences from our{" "}
+                        <span className="text-gradient">traders</span>
+                    </h2>
+                    <p className="text-large text-pen-muted mx-auto mt-3 max-w-2xl">
+                        Who have built successful careers at Nitara
+                        Securities.
+                    </p>
                 </div>
 
-                {/* mobile 1.2 cards, tablet 2.5 cards, desktop 4.5 cards visible */}
                 <div
                     ref={trackRef}
                     onScroll={updateEdges}
@@ -144,7 +206,7 @@ function Testimonial() {
                     {testimonials.map((t) => (
                         <figure
                             key={t.id}
-                            className="rounded-4 border-canvas-white/15 bg-canvas-white/5 flex shrink-0 basis-[calc((100%-1.5rem)/1.2)] snap-start flex-col border p-6 sm:basis-[calc((100%-3rem)/2.5)] lg:basis-[calc((100%-6rem)/4.5)]"
+                            className="rounded-4 border-canvas-accent/30 bg-canvas-black/70 flex shrink-0 basis-[calc((100%-1.5rem)/1.2)] snap-start flex-col border p-6 sm:basis-[calc((100%-3rem)/2.5)] lg:basis-[calc((100%-6rem)/4.5)]"
                         >
                             <blockquote className="text-body text-pen-secondary flex-1 leading-relaxed">
                                 &ldquo;{t.quote}&rdquo;
@@ -157,6 +219,28 @@ function Testimonial() {
                             </figcaption>
                         </figure>
                     ))}
+                </div>
+
+                {/* Nav buttons */}
+                <div className="mt-8 flex items-center justify-center gap-3">
+                    <button
+                        type="button"
+                        aria-label="Previous testimonials"
+                        onClick={() => scrollByCard(-1)}
+                        disabled={!canPrev}
+                        className={navBtn}
+                    >
+                        <ChevronLeft size={22} aria-hidden />
+                    </button>
+                    <button
+                        type="button"
+                        aria-label="Next testimonials"
+                        onClick={() => scrollByCard(1)}
+                        disabled={!canNext}
+                        className={navBtn}
+                    >
+                        <ChevronRight size={22} aria-hidden />
+                    </button>
                 </div>
             </div>
         </section>

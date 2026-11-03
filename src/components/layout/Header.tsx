@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import brandLogoImg from "@/assets/brand-kit/ns-logo.svg";
+import { Phone } from "lucide-react";
 
 const navLinks = [
     { label: "How It Works", href: "/how-it-works" },
@@ -31,7 +32,7 @@ export default function Header() {
                                 <li key={l.label}>
                                     <Link
                                         href={l.href}
-                                        className="text-body text-pen-primary smooth-transition hover:text-primary"
+                                        className="text-body text-pen-primary smooth-transition hover:text-canvas-accent font-medium"
                                     >
                                         {l.label}
                                     </Link>
@@ -44,9 +45,9 @@ export default function Header() {
                 {/* Right: CTA (hidden on mobile) */}
                 <Link
                     href="#"
-                    className="rounded-2 bg-canvas-white text-body text-pen-black smooth-transition hover:bg-pen-secondary hidden items-center gap-2 px-6 py-3 font-semibold sm:flex"
+                    className="rounded-2 cta-btn-gradient text-body text-pen-black smooth-transition flex items-center gap-2 px-6 py-3 font-semibold max-sm:px-3 max-sm:py-1.5"
                 >
-                    Call Now +91 8796140949
+                    <Phone size={18} /> Call Now
                 </Link>
             </div>
         </header>

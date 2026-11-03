@@ -1,34 +1,26 @@
 import Image, { type StaticImageData } from "next/image";
 
-// Logos milne par yahan import karo, aur neeche data mein `logo:` uncomment karo.
-// import nifty50Logo from "@/assets/indices/nifty50.svg";
-// import sensexLogo from "@/assets/indices/sensex.svg";
-
 type Instrument = {
     name: string;
     logo?: StaticImageData; // logo ho to logo dikhega, warna naam
-    note?: string; // optional chhoti explanation (jaise BULLDEX ke liye)
-};
-
-type Group = {
-    label?: string; // jaise "Gold", "IT Sector"
-    items: Instrument[];
 };
 
 type Section = {
     title: string;
     subtitle?: string;
-    groups: Group[];
+    items: Instrument[];
 };
 
 type Exchange = {
     id: string;
     code: string;
     name: string;
-    segment: string;
-    accent: string; // full class name (Tailwind dynamic string detect nahi karta)
+    gradient: string; // full class string (Tailwind dynamic string detect nahi karta)
     sections: Section[];
 };
+
+// symbols ki list se Instrument array banane ka helper
+const list = (...names: string[]): Instrument[] => names.map((name) => ({ name }));
 
 // TODO: final list NSE / BSE / MCX ki official sites se verify karo.
 const exchanges: Exchange[] = [
@@ -36,53 +28,31 @@ const exchanges: Exchange[] = [
         id: "nse",
         code: "NSE",
         name: "National Stock Exchange",
-        segment: "Futures & Options",
-        accent: "text-primary",
+        // orange -> blue
+        gradient: "from-[#ff7a1a] to-[#1e6bff]",
         sections: [
             {
                 title: "Index Derivatives",
-                subtitle: "Major market benchmarks",
-                groups: [
-                    {
-                        items: [
-                            { name: "Nifty 50" /* , logo: nifty50Logo */ },
-                            { name: "Bank Nifty" },
-                            { name: "FinNifty" },
-                            { name: "Midcap Nifty" },
-                            { name: "Nifty Next 50" },
-                        ],
-                    },
-                ],
+                items: list(
+                    "NIFTY",
+                    "BANKNIFTY",
+                    "FINNIFTY",
+                    "MIDCPNIFTY",
+                    "NIFTYNXT50",
+                    "NIFTYFPI",
+                ),
             },
             {
                 title: "Stock Derivatives",
-                subtitle: "Top 200+ large-cap stocks",
-                groups: [
-                    {
-                        label: "Banking & Financial",
-                        items: [
-                            { name: "HDFCBANK" },
-                            { name: "ICICIBANK" },
-                            { name: "SBIN" },
-                        ],
-                    },
-                    {
-                        label: "IT Sector",
-                        items: [{ name: "TCS" }, { name: "INFY" }, { name: "WIPRO" }],
-                    },
-                    {
-                        label: "Energy & Heavy Industry",
-                        items: [
-                            { name: "RELIANCE" },
-                            { name: "TATASTEEL" },
-                            { name: "L&T" },
-                        ],
-                    },
-                    {
-                        label: "Automobiles & Consumer Goods",
-                        items: [{ name: "TATAMOTORS" }, { name: "MARUTI" }],
-                    },
-                ],
+                items: list(
+                    "RELIANCE",
+                    "HDFCBANK",
+                    "ICICIBANK",
+                    "SBIN",
+                    "TCS",
+                    "INFY",
+                    "BAJFINANCE",
+                ),
             },
         ],
     },
@@ -90,24 +60,16 @@ const exchanges: Exchange[] = [
         id: "bse",
         code: "BSE",
         name: "Bombay Stock Exchange",
-        segment: "Futures & Options",
-        accent: "text-primary",
+        // sky blue -> blue
+        gradient: "from-[#38bdf8] to-[#1d4ed8]",
         sections: [
             {
                 title: "Index Derivatives",
-                subtitle: "Flagship BSE indices",
-                groups: [
-                    {
-                        items: [
-                            { name: "Sensex" /* , logo: sensexLogo */ },
-                            { name: "Bankex" },
-                        ],
-                    },
-                ],
+                items: list("SENSEX", "BANKEX"),
             },
             {
                 title: "Stock Derivatives",
-                groups: [{ items: [{ name: "Stock Derivatives" }] }],
+                items: list("SBIN", "HDFCBANK", "ICICIBANK", "AXISBANK", "TCS", "INFY"),
             },
         ],
     },
@@ -115,74 +77,28 @@ const exchanges: Exchange[] = [
         id: "mcx",
         code: "MCX",
         name: "Multi Commodity Exchange",
-        segment: "Commodities",
-        accent: "text-secondary",
+        // blue -> red -> blue
+        gradient: "from-[#2f6bff] via-[#ef3b36] to-[#2f6bff]",
         sections: [
             {
                 title: "Bullion",
-                subtitle: "Precious metals",
-                groups: [
-                    {
-                        label: "Gold",
-                        items: [
-                            { name: "Gold" },
-                            { name: "Gold Mini" },
-                            // { name: "Gold Guinea" },
-                            // { name: "Gold Petal" },
-                        ],
-                    },
-                    {
-                        label: "Silver",
-                        items: [
-                            { name: "Silver" },
-                            { name: "Silver Mini" },
-                            // { name: "Silver Micro" },
-                        ],
-                    },
-                ],
+                items: list("GOLD", "SILVER"),
             },
             {
                 title: "Energy",
-                groups: [
-                    {
-                        label: "Crude Oil",
-                        items: [{ name: "Crude Oil" }, { name: "Crude Oil Mini" }],
-                    },
-                ],
+                items: list("CRUDEOIL", "NATURALGAS"),
             },
             {
                 title: "Commodity Indices",
-                subtitle: "Sector-wise baskets",
-                groups: [
-                    {
-                        items: [
-                            { name: "BULLDEX", note: "Gold + Silver combined index" },
-                            {
-                                name: "ENERDEX",
-                                note: "Crude Oil + Natural Gas index",
-                            },
-                        ],
-                    },
-                ],
+                items: list("BULLDEX", "ENERDEX"),
             },
         ],
     },
 ];
 
 function InstrumentChip({ instrument }: { instrument: Instrument }) {
-    if (instrument.note) {
-        return (
-            <li className="border-canvas-white/15 rounded-3 flex w-full flex-col border px-4 py-2">
-                <span className="text-small text-pen-secondary font-medium">
-                    {instrument.name}
-                </span>
-                <span className="text-xsmall text-pen-muted">{instrument.note}</span>
-            </li>
-        );
-    }
-
     return (
-        <li className="border-canvas-white/15 text-small text-pen-secondary flex h-10 items-center rounded-full border px-4">
+        <li className="border-canvas-white/15 text-small font-medium text-pen-secondary flex py-1    items-center rounded-full border px-4">
             {instrument.logo ? (
                 <Image
                     src={instrument.logo}
@@ -200,30 +116,29 @@ function MarketsAndInstruments() {
     return (
         <section className="px-6 py-24 sm:px-8 lg:px-12">
             <div className="mx-auto max-w-6xl">
-                <h2 className="text-h3 text-pen-primary text-center font-bold">
-                    Markets You Can Trade
-                </h2>
+                <div className="text-center">
+                    <h2 className="text-h2 leading-13 font-bold">
+                        Choose Your Winning <br />
+                        <span className="text-gradient">Instrument</span>
+                    </h2>
+                </div>
 
                 <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
                     {exchanges.map((exchange) => (
                         <article
                             key={exchange.id}
-                            className="rounded-4 border-canvas-white/15 bg-canvas-white/5 flex flex-col border p-6"
+                            className="rounded-3 border-canvas-white/15 flex flex-col border p-6"
                         >
-                            <header className="flex items-start justify-between gap-4">
-                                <div>
-                                    <h3
-                                        className={`text-h3 font-bold ${exchange.accent}`}
-                                    >
-                                        {exchange.code}
-                                    </h3>
-                                    <p className="text-small text-pen-muted mt-1">
-                                        {exchange.name}
-                                    </p>
-                                </div>
-                                <span className="border-canvas-white/15 text-xsmall text-pen-secondary shrink-0 rounded-full border px-3 py-1">
-                                    {exchange.segment}
-                                </span>
+                            {/* Header: gradient code, neeche exchange ka naam */}
+                            <header>
+                                <h3
+                                    className={`text-h1 w-fit bg-linear-to-r bg-clip-text font-bold text-transparent ${exchange.gradient}`}
+                                >
+                                    {exchange.code}
+                                </h3>
+                                <p className="text-body text-pen-muted mt-1">
+                                    {exchange.name}
+                                </p>
                             </header>
 
                             <div className="mt-6 flex flex-col gap-6">
@@ -241,25 +156,14 @@ function MarketsAndInstruments() {
                                             </p>
                                         )}
 
-                                        <div className="mt-4 flex flex-col gap-4">
-                                            {section.groups.map((group, i) => (
-                                                <div key={group.label ?? i}>
-                                                    {group.label && (
-                                                        <p className="text-small text-pen-secondary mb-2 font-medium">
-                                                            {group.label}
-                                                        </p>
-                                                    )}
-                                                    <ul className="flex flex-wrap gap-2">
-                                                        {group.items.map((item) => (
-                                                            <InstrumentChip
-                                                                key={item.name}
-                                                                instrument={item}
-                                                            />
-                                                        ))}
-                                                    </ul>
-                                                </div>
+                                        <ul className="mt-4 flex flex-wrap gap-2">
+                                            {section.items.map((item) => (
+                                                <InstrumentChip
+                                                    key={item.name}
+                                                    instrument={item}
+                                                />
                                             ))}
-                                        </div>
+                                        </ul>
                                     </div>
                                 ))}
                             </div>

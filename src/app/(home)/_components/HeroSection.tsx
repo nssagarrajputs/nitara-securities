@@ -1,23 +1,27 @@
 import Link from "next/link";
-import { Zap } from "lucide-react";
 
 function HeroSection() {
     return (
         <section className="relative overflow-hidden px-6 py-40 sm:px-8 lg:px-12">
+            {/* dotted grid background */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.22)_1px,transparent_1px)] mask-[radial-gradient(ellipse_at_center,black_30%,transparent_75%)] bg-size-[24px_24px]"
+            />
             {/* halka accent glow */}
             <div
                 aria-hidden
-                className="pointer-events-none absolute top-0 left-1/2 h-96 w-3/4 -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,var(--color-canvas-accent),transparent_70%)] opacity-[0.12]"
+                className="pointer-events-none absolute top-0 left-1/2 h-96 w-[110%] -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,var(--color-canvas-accent),transparent_70%)] opacity-[0.15]"
             />
 
-            <div className="relative mx-auto max-w-4xl text-center">
+            <div className="relative mx-auto max-w-6xl text-center">
                 {/* Eyebrow */}
-                <p className="text-small text-primary inline-flex items-center gap-2 font-semibold">
-                    <span aria-hidden className="bg-canvas-accent size-2 rounded-full" />
+                <p className="text-small text-canvas-accent border-canvas-accent bg-canvas-accent/5 inline-flex items-center gap-2 rounded-full border px-4 py-2 font-semibold">
+                    <span aria-hidden className="cta-btn-gradient size-2 rounded-full" />
                     Funded trading for the Indian markets
                 </p>
 
-                <h1 className="text-h1 text-pen-primary mt-6 leading-[1.1] font-black text-balance">
+                <h1 className="text-d1 text-pen-primary my-12 leading-[1.3] font-bold tracking-tighter text-balance">
                     Get up to{" "}
                     <span className="from-primary to-canvas-accent bg-linear-to-r bg-clip-text text-transparent">
                         30X Leverage
@@ -25,13 +29,12 @@ function HeroSection() {
                     to trade in the stock market.
                 </h1>
 
-                <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                     <Link
                         href="#"
-                        className="bg-canvas-white rounded-2 text-body text-pen-black smooth-transition hover:bg-pen-secondary flex w-full items-center justify-center gap-2 px-6 py-3 font-semibold sm:w-auto"
+                        className="cta-btn-gradient rounded-2 text-body text-pen-black smooth-transition hover:bg-pen-secondary flex w-full items-center justify-center gap-2 px-6 py-3 font-semibold sm:w-auto"
                     >
-                        Get funded now
-                        <Zap size={20} strokeWidth={2} aria-hidden />
+                        Call Now +91 8796140949
                     </Link>
                     <Link
                         href="#how-it-works"

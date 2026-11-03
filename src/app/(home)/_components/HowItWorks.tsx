@@ -39,7 +39,21 @@ function HowItWorks() {
     }
 
     return (
-        <section className="px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
+        <section
+            id="how-it-works"
+            className="relative overflow-hidden px-4 py-16 sm:px-8 sm:py-24 lg:px-12"
+        >
+            {/* accent glow: left */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute top-1/2 left-0 h-144 w-xl -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,var(--color-canvas-accent),transparent_70%)] opacity-[0.15]"
+            />
+
+            {/* accent glow: right */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute top-1/2 right-0 h-144 w-xl translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,var(--color-canvas-accent),transparent_70%)] opacity-[0.15]"
+            />
             <div className="mx-auto max-w-4xl">
                 {/* Heading */}
                 <div className="text-center">
@@ -53,11 +67,9 @@ function HowItWorks() {
                 </div>
 
                 {/* Calculator */}
-                <div className="border-pen-white/15 bg-pen-white/5 rounded-4 mt-12 border p-6 sm:p-10">
+                <div className="mt-14">
                     {/* Margin */}
-                    <p className="text-pen-secondary text-large font-medium">
-                        A margin of
-                    </p>
+                    <p className="text-pen-secondary text-h4 font-medium">A margin of</p>
 
                     <label className="border-pen-white/20 focus-within:border-primary smooth-transition rounded-3 mt-3 flex items-center gap-2 border px-4 py-3">
                         <span className="text-h3 text-pen-muted font-semibold">₹</span>
@@ -68,10 +80,10 @@ function HowItWorks() {
                             value={margin ? inr.format(margin) : ""}
                             onChange={handleInput}
                             placeholder="0"
-                            className="text-h3 w-full bg-transparent font-semibold outline-none focus-visible:outline-none"
+                            className="text-h3 w-full bg-transparent text-center font-semibold outline-none focus-visible:outline-none"
                         />
                     </label>
-                    <p className="text-small text-pen-muted mt-2">
+                    <p className="text-small text-pen-muted mt-2 text-right">
                         {margin ? toWords(margin) : "Enter an amount"}
                     </p>
 
@@ -101,14 +113,14 @@ function HowItWorks() {
                     <div className="my-8 flex items-center gap-4">
                         <div className="bg-pen-white/15 h-px flex-1" />
                         <span className="bg-secondary text-pen-black text-small rounded-full px-4 py-1 font-bold">
-                           ~ {LEVERAGE}X
+                            ~ {LEVERAGE}X
                         </span>
                         <div className="bg-pen-white/15 h-px flex-1" />
                     </div>
 
                     {/* Exposure */}
                     <p className="text-pen-secondary text-large font-medium">
-                        will give an exposure of upto ~
+                        will give an exposure of holding positions upto
                     </p>
 
                     <div className="border-canvas-accent/40 bg-canvas-accent/10 rounded-3 mt-3 flex items-center gap-2 border px-4 py-3">
@@ -120,10 +132,10 @@ function HowItWorks() {
                             readOnly
                             aria-label="Exposure amount in rupees"
                             value={exposure ? inr.format(exposure) : "0"}
-                            className="text-h3 text-canvas-accent w-full bg-transparent font-bold outline-none"
+                            className="text-d1 max-md:text-h2 text-canvas-accent w-full bg-transparent text-center font-bold outline-none"
                         />
                     </div>
-                    <p className="text-small text-pen-muted mt-2">
+                    <p className="text-small text-pen-muted mt-2 text-right">
                         {exposure ? toWords(exposure) : ""}
                     </p>
                 </div>

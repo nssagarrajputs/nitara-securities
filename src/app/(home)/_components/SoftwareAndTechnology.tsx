@@ -1,6 +1,6 @@
 import Image, { type StaticImageData } from "next/image";
-import Link from "next/link";
-import { Activity, ArrowRight, MousePointerClick, type LucideIcon } from "lucide-react";
+
+import { Activity, MousePointerClick, type LucideIcon } from "lucide-react";
 
 // Screenshots / mockups milne par import karo aur neeche data mein `image:` set karo.
 import optionChainImg from "@/assets/software/advancedoptionchain.png";
@@ -10,10 +10,10 @@ type FeatureCard = {
     id: number;
     title: string;
     description: string;
-    // "large" = image wala bada card (2 columns), "small" = chhota card (1 column)
     size: "large" | "small";
     image?: StaticImageData;
-    icon?: LucideIcon; // chhote card ke liye
+    icon?: LucideIcon;
+    accent?: "primary" | "secondary"; // small card ka colour
 };
 
 // Order important hai: bento rows (2+1, 1+2) isi order se bante hain.
@@ -29,6 +29,7 @@ const features: FeatureCard[] = [
     {
         id: 2,
         size: "small",
+        accent: "primary",
         icon: Activity,
         title: "Live P&L & Risk Tracking",
         description: "Real-time P&L, positions and exposure, always in front of you.",
@@ -36,6 +37,7 @@ const features: FeatureCard[] = [
     {
         id: 3,
         size: "small",
+        accent: "secondary",
         icon: MousePointerClick,
         title: "One-Click Basket Orders",
         description: "Place all legs of a strategy together in a single click.",
@@ -84,24 +86,38 @@ function LargeCard({ card }: { card: FeatureCard }) {
     );
 }
 
+const smallAccent = {
+    primary: {
+        card: "border-primary/50 from-primary/30",
+        icon: "border-primary/60 bg-primary/10 text-primary",
+        title: "text-primary",
+    },
+    secondary: {
+        card: "border-secondary/50 from-secondary/30",
+        icon: "border-secondary/60 bg-secondary/10 text-secondary",
+        title: "text-secondary",
+    },
+};
+
 function SmallCard({ card }: { card: FeatureCard }) {
     const Icon = card.icon;
+    const accent = smallAccent[card.accent ?? "primary"];
 
     return (
-        <article className="rounded-4 border-canvas-white/15 bg-canvas-white/5 flex min-h-64 flex-col justify-between border p-6 sm:p-8">
+        <article
+            className={`rounded-4 flex min-h-64 flex-col justify-between border bg-linear-to-b to-transparent to-90% p-6 sm:p-8 ${accent.card}`}
+        >
             {Icon && (
-                <div className="flex-center border-primary/60 bg-primary/10 text-primary size-12 rounded-full border">
+                <div className={`flex-center size-12 rounded-full border ${accent.icon}`}>
                     <Icon size={22} aria-hidden />
                 </div>
             )}
 
             <div className="mt-8">
-                <h3 className="text-large text-pen-primary font-semibold">
-                    {card.title}
-                </h3>
-                <p className="text-body text-pen-muted mt-2 leading-relaxed">
+                <h3 className={`text-h2 font-semibold ${accent.title}`}>{card.title}</h3>
+                {/* <p className="text-body text-pen-muted mt-2 leading-relaxed">
                     {card.description}
-                </p>
+                </p> */}
             </div>
         </article>
     );
@@ -112,8 +128,14 @@ function SoftwareAndTechnology() {
         <section className="px-6 py-24 sm:px-8 lg:px-12">
             <div className="mx-auto max-w-6xl">
                 <h2 className="text-h3 text-pen-primary text-center font-bold">
-                    Software Built for Serious Traders
+                    <br />
                 </h2>
+                <div className="text-center">
+                    <h2 className="text-h2 leading-13 font-bold">
+                        Feature-Packed Trading{" "}
+                        <span className="text-gradient">Ecosystem</span>
+                    </h2>
+                </div>
 
                 <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
                     {features.map((card) =>
@@ -123,20 +145,6 @@ function SoftwareAndTechnology() {
                             <SmallCard key={card.id} card={card} />
                         ),
                     )}
-                </div>
-
-                <div className="mt-10 flex justify-center">
-                    <Link
-                        href="/terminal"
-                        className="group text-body text-primary hover:text-pen-primary smooth-transition inline-flex items-center gap-2 font-semibold underline-offset-4 hover:underline"
-                    >
-                        Explore our proprietary trading terminal
-                        <ArrowRight
-                            size={20}
-                            aria-hidden
-                            className="transition-transform duration-300 group-hover:translate-x-1"
-                        />
-                    </Link>
                 </div>
             </div>
         </section>

@@ -22,41 +22,54 @@ const steps = [
 function GetStarted() {
     return (
         <section className="px-6 py-24 sm:px-8 lg:px-12">
-            <div className="mx-auto max-w-6xl">
-                <div className="mx-auto max-w-2xl text-center">
-                    <h2 className="text-h3 text-pen-primary font-bold">
-                        Get Started with Nitara Securities
+            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+                {/* Left: heading */}
+                <div className="lg:sticky lg:top-32 lg:self-start">
+                    <h2 className="text-h2 font-bold">
+                        Get Started with{" "}
+                        <span className="text-gradient">Nitara Securities</span>
                     </h2>
-                    <p className="text-large text-pen-secondary mt-4 leading-relaxed">
+                    <p className="text-large text-pen-muted mt-4 max-w-md leading-relaxed">
                         A straightforward process. Just three simple steps to begin your
                         trading journey.
                     </p>
+
+                    <a
+                        href="tel:+918796140949"
+                        className="cta-btn-gradient rounded-2 text-body text-pen-black smooth-transition hover:bg-pen-secondary mt-8 flex w-full items-center justify-center gap-2 px-6 py-3 font-semibold sm:w-fit"
+                    >
+                        Call now - +91 87961 40949
+                    </a>
                 </div>
 
-                <ol className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
-                    {steps.map((step) => (
-                        <li key={step.id}>
-                            {/* number badge + connecting line (sirf md se, last step par nahi) */}
-                            <div className="flex items-center gap-4">
+                {/* Right: vertical steps */}
+                <ol className="flex flex-col">
+                    {steps.map((step, i) => (
+                        <li key={step.id} className="flex gap-5 sm:gap-6">
+                            {/* number badge + vertical connecting line */}
+                            <div className="flex flex-col items-center">
                                 <div className="flex-center border-primary/60 bg-primary/10 text-h4 text-primary size-14 shrink-0 rounded-full border font-semibold">
                                     {step.id}
                                 </div>
-
-                                <div
-                                    aria-hidden
-                                    className="from-primary/40 hidden h-px flex-1 bg-linear-to-r to-transparent md:block"
-                                />
+                                {i < steps.length - 1 && (
+                                    <div
+                                        aria-hidden
+                                        className="from-primary/40 my-2 w-px flex-1 bg-linear-to-b to-transparent"
+                                    />
+                                )}
                             </div>
 
-                            <p className="text-small text-primary mt-6 font-semibold">
-                                Step {step.id}
-                            </p>
-                            <h3 className="text-h4 text-pen-primary mt-1 font-semibold">
-                                {step.title}
-                            </h3>
-                            <p className="text-body text-pen-muted mt-3 leading-relaxed">
-                                {step.description}
-                            </p>
+                            <div className={i < steps.length - 1 ? "pb-12" : undefined}>
+                                <p className="text-small text-primary font-semibold">
+                                    Step {step.id}
+                                </p>
+                                <h3 className="text-h4 text-pen-primary mt-1 font-semibold">
+                                    {step.title}
+                                </h3>
+                                <p className="text-body text-pen-muted mt-3 leading-relaxed">
+                                    {step.description}
+                                </p>
+                            </div>
                         </li>
                     ))}
                 </ol>

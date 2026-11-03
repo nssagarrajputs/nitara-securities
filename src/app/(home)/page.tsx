@@ -44,8 +44,8 @@ export default function Home() {
             <HeroSection />
             <HowItWorks />
             <MarketsAndInstruments />
-            <Statistics />
             <SoftwareAndTechnology />
+            <Statistics />
             <Strategies />
             <EdgeBanner />
             <Testimonial />

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 function EdgeBanner() {
     return (
@@ -23,10 +23,9 @@ function EdgeBanner() {
                 <div className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row">
                     <Link
                         href="#"
-                        className="bg-canvas-white rounded-2 text-body text-pen-black smooth-transition hover:bg-pen-secondary flex items-center gap-2 px-8 py-4 font-semibold"
+                        className="cta-btn-gradient rounded-2 text-body text-pen-black smooth-transition hover:bg-pen-secondary flex items-center gap-2 px-8 py-4 font-semibold"
                     >
-                        Get funded now
-                        <Zap size={20} strokeWidth={2} aria-hidden />
+                        Call now +91 87961 40949
                     </Link>
 
                     <Link
@@ -41,16 +40,6 @@ function EdgeBanner() {
                         />
                     </Link>
                 </div>
-
-                <p className="text-body text-pen-muted mt-10">
-                    or Call us now{" "}
-                    <a
-                        href="tel:+918796140949"
-                        className="text-pen-primary hover:text-primary smooth-transition font-semibold"
-                    >
-                        +91 87961 40949
-                    </a>
-                </p>
             </div>
         </section>
     );

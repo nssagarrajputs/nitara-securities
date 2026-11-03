@@ -25,7 +25,7 @@ function CallToActionSection() {
                     <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                         <Link
                             href="#"
-                            className="bg-canvas-white rounded-2 text-body text-pen-black smooth-transition hover:bg-pen-secondary flex w-full items-center justify-center gap-2 px-6 py-3 font-semibold sm:w-auto"
+                            className="cta-btn-gradient rounded-2 text-body text-pen-black smooth-transition hover:bg-pen-secondary flex w-full items-center justify-center gap-2 px-6 py-3 font-semibold sm:w-auto"
                         >
                             Get funded upto 30X Leverage
                             <Zap size={20} strokeWidth={2} aria-hidden />
